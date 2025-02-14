@@ -1,0 +1,32 @@
+
+#add-todo-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 12px;
+}
+
+#add-todo-input {
+    width: 500px;
+    height: 40px;
+    border-radius: 8px;
+    border:solid 1px #444;
+    padding: 0 0.5rem;
+}
+
+.add-todo-button {
+    color: #fff;
+    padding: 0.3rem 1.5rem;
+    background-color: #3DA0EC;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.4s;
+}
+
+.add-todo-button:hover {
+    background-color: #107bcd;
+}
