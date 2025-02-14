@@ -26,23 +26,24 @@
     font-size: 15px;
 }
 
-.icon-control i {
+.icon-control  button{
     background-color: #31A2EE ;
     padding: 0.5rem 0.9rem;
     color: #fff;
     border-radius: 8px;
     cursor: pointer;
+    border: none;
     opacity: 0.8;
 }
 
-.icon-control i:hover {
+.icon-control button:hover {
     opacity: 1;
 }
 
-.icon-control i:nth-child(2) {
+.icon-control button:nth-child(2) {
     background-color: #A19C9C;
 }
 
-.icon-control i:nth-child(3) {
+.icon-control button:nth-child(3) {
     background-color: #DE1B1B;
 }

@@ -6,10 +6,12 @@ import "./AddTodo.css"
 const AddTodo = () => {
 
     const [inputValue , setInputValue] = useState("")
+
+    // recebe um array vazio
     const [todos , setTodos] = useState([])
 
     const renderTodo = () => {
-
+        // adiciona um novo todo no array
         setTodos([...todos , inputValue])
 
         setInputValue("")
