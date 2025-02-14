@@ -17,7 +17,15 @@ const AddTodo = () => {
         setInputValue("")
     }
 
+    const removeTodo = (i) => {
+        console.log(i)
 
+        setTodos(todos.filter((_ , index) => index !== i))
+    }
+
+    const doneTodo = (i) => {
+
+    }
 
     return (
         <> 
@@ -27,7 +35,7 @@ const AddTodo = () => {
         </div>
         <div className="todo-container">
             {todos.map((todo, index) => (
-                <Todo key={index} title={todo}/>    
+                <Todo key={index} title={todo} actionRemove={() => removeTodo(index)}/>    
             ))}
         </div>
         </>
