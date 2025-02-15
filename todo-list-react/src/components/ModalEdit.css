@@ -1,0 +1,70 @@
+
+.modal-container {
+    content: "";
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: #000000bc;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* display: none; */
+}
+
+.modal-content {
+    position: relative;
+    width: 40%;
+    height: 300px;
+    padding: 2rem;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 8px; 
+}
+
+.modal-content h2 {
+    text-align: center;
+    padding-bottom: 1rem;
+    border-bottom: solid 1px #646262;
+}
+
+.input-control {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-top: 2rem;  
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.input-control input {
+    width: 50% ;
+    height: 40px;
+    border-radius: 8px;
+    border: solid 1px #444;
+}
+
+.input-control button {
+    color: #fff;
+    padding: 0.3rem 1.5rem;
+    background-color: #3DA0EC;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.4s;
+}
+
+.cancelar-button {
+    color: #fff;
+    background-color: red;
+    padding: .6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-left: 6rem;
+}

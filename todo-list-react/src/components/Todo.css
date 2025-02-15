@@ -14,7 +14,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-content: space-between
+    justify-content: space-between;
+    
+    transition: all 0.3s;
 
 }
 
@@ -46,4 +48,10 @@
 
 .icon-control button:nth-child(3) {
     background-color: #DE1B1B;
+}
+
+.done {
+    background: #0c507d;
+    text-decoration: line-through;
+    color: #fff;
 }

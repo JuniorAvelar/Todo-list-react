@@ -30,3 +30,7 @@
 .add-todo-button:hover {
     background-color: #107bcd;
 }
+
+button i {
+    pointer-events: none;
+}
