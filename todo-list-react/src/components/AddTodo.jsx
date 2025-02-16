@@ -3,7 +3,8 @@ import Todo from "./todo"
 
 import "./AddTodo.css"
 
-const AddTodo = () => {
+const AddTodo = ({toogleModal}) => {
+    // const modal = document.querySelector(".modal-container")
 
     const [inputValue , setInputValue] = useState("")
 
@@ -13,26 +14,21 @@ const AddTodo = () => {
     
 
     const renderTodo = () => {
+        if(!inputValue) return
+
         // pega o valor de inputValue e adiciona no array todo
         setTodos([...todos , inputValue])
         setInputValue("")
     }
 
     const removeTodo = (i) => {
-        console.log(i)
-
+        // filtra o array de todos , e retorna um array sem todo que foi removido
         setTodos(todos.filter((_ , index) => index !== i))
     }
 
     const doneTodo = (e , i) => {
       const todoElment = e.target.closest(".todo")
       todoElment.classList.toggle("done")
-    }
-
-    const editTodo = (e) => {
-        const todoElment = e.target.closest(".todo")
-        const ContentTodo = todoElment.querySelector("h3").textContent
-        console.log(ContentTodo)
     }
 
     return (
@@ -43,7 +39,7 @@ const AddTodo = () => {
             </div>
             <div className="todo-container">
                 {todos.map((todo, index) => (
-                    <Todo key={index} title={todo} actionRemove={() => removeTodo(index)} doneTodo={(e) => doneTodo(e, index)} editTodo={(e) => editTodo(e)}/>    
+                    <Todo key={index} title={todo} actionRemove={() => removeTodo(index)} doneTodo={(e) => doneTodo(e, index)} toogleModal={toogleModal}  />    
                 ))}
             </div>
         </>

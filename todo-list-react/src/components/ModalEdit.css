@@ -44,6 +44,7 @@
     width: 50% ;
     height: 40px;
     border-radius: 8px;
+    padding-inline: 10px;
     border: solid 1px #444;
 }
 
@@ -56,15 +57,27 @@
     text-align: center;
     cursor: pointer;
     font-size: 20px;
+    opacity: .8;
     transition: all 0.4s;
+}
+
+.input-control button:hover {
+    opacity: 1;
 }
 
 .cancelar-button {
     color: #fff;
-    background-color: red;
+    background-color: rgb(240, 24, 24);
     padding: .6rem 1.5rem;
     border: none;
     border-radius: 8px;
     font-weight: bold;
     margin-left: 6rem;
+    cursor: pointer;
+    transition: all 0.3s;
 }
+
+.cancelar-button:hover {
+    background: rgb(197, 2, 2);
+}
+
