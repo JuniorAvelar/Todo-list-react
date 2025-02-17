@@ -1,17 +1,15 @@
 import {  useState } from "react"
+
 import Todo from "./todo"
 
 import "./AddTodo.css"
 
-const AddTodo = ({toogleModal}) => {
-    // const modal = document.querySelector(".modal-container")
+const AddTodo = ({toogleModal }) => {
 
     const [inputValue , setInputValue] = useState("")
 
     // recebe um array vazio
     const [todos , setTodos] = useState([])
-
-    
 
     const renderTodo = () => {
         if(!inputValue) return
@@ -27,6 +25,7 @@ const AddTodo = ({toogleModal}) => {
     }
 
     const doneTodo = (e , i) => {
+        // busca pelo elemento pai mais proximo 
       const todoElment = e.target.closest(".todo")
       todoElment.classList.toggle("done")
     }
