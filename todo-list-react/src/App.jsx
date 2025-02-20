@@ -4,7 +4,6 @@ import './App.css'
 import AddTodo from './components/AddTodo'
 import Header from "./components/Header"
 import ModalEdit from './components/ModalEdit'
-import Todo from './components/todo'
 
 
 function App() {
@@ -16,8 +15,9 @@ function App() {
     if(e.target.closest(".todo")) {
       const getTodo = e.target.closest(".todo")
       const title = getTodo.querySelector("h3").textContent
-       setOldTtitle(title)
-
+      setOldTtitle(title)
+        
+      // muda o estado do modal, dependendo se ele for false ou true
       setModal(!modal)
     }
     else{

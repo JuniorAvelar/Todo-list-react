@@ -4,7 +4,7 @@ import Todo from "./todo"
 
 import "./AddTodo.css"
 
-const AddTodo = ({toogleModal }) => {
+const AddTodo = ({ toogleModal }) => {
 
     const [inputValue , setInputValue] = useState("")
 
@@ -14,21 +14,31 @@ const AddTodo = ({toogleModal }) => {
     const renderTodo = () => {
         if(!inputValue) return
 
+        // NOVA LOGICA 
         // pega o valor de inputValue e adiciona no array todo
-        setTodos([...todos , inputValue])
+        const newTodo = { id: Date.now(), title: inputValue, done: false }
+        setTodos([...todos , newTodo])
+
         setInputValue("")
     }
 
-    const removeTodo = (i) => {
+    const removeTodo = (id) => {
         // filtra o array de todos , e retorna um array sem todo que foi removido
-        setTodos(todos.filter((_ , index) => index !== i))
+        setTodos(todos.filter((todo) => todo.id !== id))
     }
 
-    const doneTodo = (e , i) => {
-        // busca pelo elemento pai mais proximo 
-      const todoElment = e.target.closest(".todo")
-      todoElment.classList.toggle("done")
+    const doneTodo = (e , id) => {
+        // todo.id === id → Verifica se o ID da tarefa é igual ao ID clicado.
+        // { ...todo } → Cria uma cópia da tarefa para não modificar o original.
+      setTodos(todos.map((todo) => todo.id === id ? {...todo , done:!todo.done} : todo))
+      console.log(todos)
     }
+
+    const editTodo = (id) => {
+        const element = todos.find((item) => item.id === id)
+        console.log(element)
+    }
+    
 
     return (
         <> 
@@ -37,8 +47,8 @@ const AddTodo = ({toogleModal }) => {
             <button onClick={renderTodo} className="add-todo-button"><i className="fa-solid fa-plus"></i></button>
             </div>
             <div className="todo-container">
-                {todos.map((todo, index) => (
-                    <Todo key={index} title={todo} actionRemove={() => removeTodo(index)} doneTodo={(e) => doneTodo(e, index)} toogleModal={toogleModal}  />    
+                {todos.map((todo) => (
+                    <Todo key={todo.id} title={todo.title} actionRemove={() => removeTodo(todo.id)} doneTodo={(e) => doneTodo(e , todo.id)} todo={todo} toogleModal={toogleModal} editTodo={() => editTodo(id)}   />    
                 ))}
             </div>
         </>

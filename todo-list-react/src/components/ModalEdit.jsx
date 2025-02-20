@@ -1,13 +1,10 @@
 import './ModalEdit.css'
 import { useState } from 'react'
 
-const ModalEdit = ({ toogleModal , oldTtitle }) => {
+const ModalEdit = ({ toogleModal , oldTtitle ,  }) => {
     const [newValueInput , setNewValueInput]= useState(oldTtitle)
     console.log(newValueInput)
 
-    const upDateTodo = (oldTtitle) =>{
-        
-    }
    
     return(
         <div className="modal-container hidde">

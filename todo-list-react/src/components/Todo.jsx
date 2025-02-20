@@ -1,8 +1,8 @@
 import "./Todo.css"
-const Todo = ({title , actionRemove, doneTodo , toogleModal} ) =>{
+const Todo = ({ title , actionRemove, doneTodo , toogleModal , todo } ) =>{
     return (
         <div id="todo-container">
-            <div className="todo">
+            <div className = {`todo ${todo.done ? 'done' : ''} `}>
                 <h3>{title}</h3>
                 <div className="icon-control">
                     <button onClick={doneTodo}><i className="fa-solid fa-check"></i></button>
