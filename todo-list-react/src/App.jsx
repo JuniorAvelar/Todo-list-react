@@ -7,32 +7,29 @@ import ModalEdit from './components/ModalEdit'
 
 
 function App() {
-  const [modal , setModal] = useState(false)
-  const [oldTtitle , setOldTtitle] = useState('')
+
+  // recebe um array vazio
+  const [todos , setTodos] = useState([])
+
+  const [modal , setModal] = useState(false) // gerencia o modal
+
+  const [editingTodo, setEditingTodo] = useState(null); // Armazena o todo que está sendo editado
 
 
-  const toogleModal = (e) => {
-    if(e.target.closest(".todo")) {
-      const getTodo = e.target.closest(".todo")
-      const title = getTodo.querySelector("h3").textContent
-      setOldTtitle(title)
-        
+  const toogleModal = (todo) => {
+    // estou usando o toggle modal para pegar o elemento que vai ser aditado 
+      setEditingTodo(todo)
+      
       // muda o estado do modal, dependendo se ele for false ou true
       setModal(!modal)
-    }
-    else{
-      setModal(!modal)
-    }
-  
-
   }
     
   return (
     <div>
       <Header/>
-      <AddTodo toogleModal={toogleModal}/>
+      <AddTodo toogleModal={toogleModal} todos={todos} setTodos={setTodos} />
       {/*  Quando modal é true , O modal é renderizado! */}
-        {modal && <ModalEdit toogleModal={toogleModal} oldTtitle={oldTtitle}/>}
+        {modal && <ModalEdit toogleModal={toogleModal} editingTodo={editingTodo} todos={todos} setTodos={setTodos} />}
     </div>
   )
 }

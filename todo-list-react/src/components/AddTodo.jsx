@@ -1,15 +1,15 @@
 import {  useState } from "react"
 
-import Todo from "./todo"
+import Todo from "./Todo"
 
 import "./AddTodo.css"
 
-const AddTodo = ({ toogleModal }) => {
+const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
 
     const [inputValue , setInputValue] = useState("")
 
     // recebe um array vazio
-    const [todos , setTodos] = useState([])
+    // const [todos , setTodos] = useState([])
 
     const renderTodo = () => {
         if(!inputValue) return
@@ -34,11 +34,11 @@ const AddTodo = ({ toogleModal }) => {
       console.log(todos)
     }
 
-    const editTodo = (id) => {
-        const element = todos.find((item) => item.id === id)
-        console.log(element)
-    }
-    
+    const handleEditTodo = (id, newTitle) => {
+        setTodos(todos.map((todo) =>
+          todo.id === id ? { ...todo, title: newTitle } : todo
+        ));
+      };
 
     return (
         <> 
@@ -48,7 +48,7 @@ const AddTodo = ({ toogleModal }) => {
             </div>
             <div className="todo-container">
                 {todos.map((todo) => (
-                    <Todo key={todo.id} title={todo.title} actionRemove={() => removeTodo(todo.id)} doneTodo={(e) => doneTodo(e , todo.id)} todo={todo} toogleModal={toogleModal} editTodo={() => editTodo(id)}   />    
+                    <Todo key={todo.id} title={todo.title} actionRemove={() => removeTodo(todo.id)} doneTodo={(e) => doneTodo(e , todo.id)} todo={todo} toogleModal={() => toogleModal(todo)} editTodo={() => handleEditTodo(todo.id)}   />    
                 ))}
             </div>
         </>
