@@ -8,16 +8,26 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
 
     const [inputValue , setInputValue] = useState("")
 
-    // recebe um array vazio
-    // const [todos , setTodos] = useState([])
+    const saveLocalStorage = (todo) => {
+        // Recupera os todos já salvos no localStorage (ou inicia um array vazio)
+        const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+        
+        // Adiciona a nova tarefa ao array
+        savedTodos.push(todo);
+    
+        // Salva o array atualizado no localStorage
+        localStorage.setItem("todos", JSON.stringify(savedTodos));
+    }
 
     const renderTodo = () => {
         if(!inputValue) return
 
-        // NOVA LOGICA 
         // pega o valor de inputValue e adiciona no array todo
         const newTodo = { id: Date.now(), title: inputValue, done: false }
         setTodos([...todos , newTodo])
+
+        saveLocalStorage(newTodo)
+
 
         setInputValue("")
     }
