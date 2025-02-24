@@ -8,8 +8,15 @@ import ModalEdit from './components/ModalEdit'
 
 function App() {
 
-  // recebe um array vazio
-  const [todos , setTodos] = useState([])
+  // recebe um array vazio 
+  // usando uma função de inicialização para o estado
+  const [todos , setTodos] = useState(() => {
+    const getTodos = JSON.parse(localStorage.getItem("todos"))
+
+    // Se houver tarefas salvas (getTodos não for null), ele retorna esse array.
+    // Se não houver tarefas salvas (getTodos for null), retorna um array vazio [] para evitar erros
+    return getTodos || []
+  })
 
   const [modal , setModal] = useState(false) // gerencia o modal
 

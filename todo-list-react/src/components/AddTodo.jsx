@@ -9,6 +9,8 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
     const [inputValue , setInputValue] = useState("")
 
     const saveLocalStorage = (todo) => {
+        // Recuperamos o array de tarefas salvas no localStorage.
+        // Se não houver tarefas salvas, criamos um array vazio.
         // Recupera os todos já salvos no localStorage (ou inicia um array vazio)
         const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
         
