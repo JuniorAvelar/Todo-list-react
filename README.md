@@ -54,8 +54,14 @@ Este projeto me ajudou a reforçar diversos conceitos essenciais no desenvolvime
 # 🔧 Como executar o projeto
 
 ## 1️⃣ Clone o repositório:
-git clone https://github.com/seu-usuario/todo-react.git
+ - git clone https://github.com/seu-usuario/todo-react.git
 
 ## 2️⃣ Acesse a pasta do projeto:
-cd todo-react
+ - cd todo-react
+
+## 3️⃣ Instale as dependências:
+ - npm install
+
+## 4️⃣ Execute o projeto:
+- npm run dev
 
