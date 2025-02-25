@@ -8,6 +8,13 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
 
     const [inputValue , setInputValue] = useState("")
 
+
+    const getTodosLocalStorage = () => {
+        const todoList = JSON.parse(localStorage.getItem("todos") || [])
+        return todoList
+      }
+
+
     const saveLocalStorage = (todo) => {
         // Recuperamos o array de tarefas salvas no localStorage.
         // Se não houver tarefas salvas, criamos um array vazio.
@@ -38,16 +45,20 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
         setTodos(todos.filter((todo) => todo.id !== id))
 
         const todosLocalStorage = JSON.parse(localStorage.getItem("todos") || [])
-        // filtrar o array de todos
+        // Filtra o array de tarefas salvas no localStorage para remover a tarefa pelo ID.
         const todo = todosLocalStorage.filter((item) => item.id !== id)
+        // atualiza o localStorage apos a exclusão da tarefa 
         localStorage.setItem("todos" , JSON.stringify(todo))
     }
 
-    const doneTodo = (e , id) => {
-        // todo.id === id → Verifica se o ID da tarefa é igual ao ID clicado.
-        // { ...todo } → Cria uma cópia da tarefa para não modificar o original.
+    const doneTodo = (id) => {
+      // todo.id === id → Verifica se o ID da tarefa é igual ao ID clicado.
+      // { ...todo } → Cria uma cópia da tarefa para não modificar o original.  
       setTodos(todos.map((todo) => todo.id === id ? {...todo , done:!todo.done} : todo))
-      console.log(todos)
+
+      const getTodosLocalStorage = JSON.parse(localStorage.getItem("todos") || [])
+      const todosAtualizado =  getTodosLocalStorage.map((item) => item.id === id ? { ...item , done: !item.done } : item)
+      localStorage.setItem("todos" , JSON.stringify(todosAtualizado))
     }
 
     const handleEditTodo = (id, newTitle) => {
@@ -64,7 +75,7 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
             </div>
             <div className="todo-container">
                 {todos.map((todo) => (
-                    <Todo key={todo.id} title={todo.title} actionRemove={() => removeTodo(todo.id)} doneTodo={(e) => doneTodo(e , todo.id)} todo={todo} toogleModal={() => toogleModal(todo)} editTodo={() => handleEditTodo(todo.id)}   />    
+                    <Todo key={todo.id} title={todo.title} actionRemove={() => removeTodo(todo.id)} doneTodo={() => doneTodo(todo.id)} todo={todo} toogleModal={() => toogleModal(todo)} editTodo={() => handleEditTodo(todo.id)}   />    
                 ))}
             </div>
         </>
