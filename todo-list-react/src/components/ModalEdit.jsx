@@ -10,6 +10,12 @@ const ModalEdit = ({ toogleModal, editingTodo , todos , setTodos }) => {
             setTodos(
                 todos.map((todo) => todo.id === editingTodo.id ? { ...todo , title: newValueInput } : todo)        
             )
+            // altera o title da tarefa no localStorage
+            const getTodosLocalStorage = JSON.parse(localStorage.getItem("todos"))
+            const todosAtualizado =  getTodosLocalStorage.map((todo) => todo.id === editingTodo.id ? {...todo , title: newValueInput } : todo )
+            localStorage.setItem("todos" , JSON.stringify(todosAtualizado))
+            
+
             toogleModal()
         }
    

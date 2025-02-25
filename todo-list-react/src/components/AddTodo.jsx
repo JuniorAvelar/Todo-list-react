@@ -56,6 +56,7 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
       // { ...todo } → Cria uma cópia da tarefa para não modificar o original.  
       setTodos(todos.map((todo) => todo.id === id ? {...todo , done:!todo.done} : todo))
 
+      // atualiza a tarefa no local storage se ela esta feita ou não
       const getTodosLocalStorage = JSON.parse(localStorage.getItem("todos") || [])
       const todosAtualizado =  getTodosLocalStorage.map((item) => item.id === id ? { ...item , done: !item.done } : item)
       localStorage.setItem("todos" , JSON.stringify(todosAtualizado))
@@ -65,7 +66,15 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
         setTodos(todos.map((todo) =>
           todo.id === id ? { ...todo, title: newTitle } : todo
         ));
-      };
+
+      // altera o title da tarefa no localStorage
+      const getTodosLocalStorage = JSON.parse(localStorage.getItem("todos"))
+      const todosAtualizado =  getTodosLocalStorage.map((todo) => todo.id === id ? {...todo , title: newTitle } : todo )
+      localStorage.setItem("todos" , JSON.stringify(todosAtualizado))
+      
+      console.log(todosAtualizado)
+
+      }
 
     return (
         <> 
