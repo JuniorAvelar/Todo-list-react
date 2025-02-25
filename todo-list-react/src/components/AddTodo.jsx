@@ -30,13 +30,17 @@ const AddTodo = ({ toogleModal ,  todos , setTodos}) => {
 
         saveLocalStorage(newTodo)
 
-
         setInputValue("")
     }
 
     const removeTodo = (id) => {
         // filtra o array de todos , e retorna um array sem todo que foi removido
         setTodos(todos.filter((todo) => todo.id !== id))
+
+        const todosLocalStorage = JSON.parse(localStorage.getItem("todos") || [])
+        // filtrar o array de todos
+        const todo = todosLocalStorage.filter((item) => item.id !== id)
+        localStorage.setItem("todos" , JSON.stringify(todo))
     }
 
     const doneTodo = (e , id) => {

@@ -8,7 +8,7 @@ import ModalEdit from './components/ModalEdit'
 
 function App() {
 
-  // recebe um array vazio 
+  // recebe um array vazio  
   // usando uma função de inicialização para o estado
   const [todos , setTodos] = useState(() => {
     const getTodos = JSON.parse(localStorage.getItem("todos"))
